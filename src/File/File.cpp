@@ -4,7 +4,7 @@
 #include <vector>
 #include <sstream>
 #include "File.hpp"
-#include "../matrix/Matrix.hpp"
+#include "../Matrix/Matrix.hpp"
 
 File::File(std::string filename) {
     File::filename = filename;
@@ -39,7 +39,9 @@ bool File::read(){
             firstLine = false;
             File::matrix.columnsCount = firstLineNumbersCount;
         }
+        return true;
     }
+    return false;
 }
 
 int File::getColumnsCount() {

@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "../matrix/Matrix.hpp"
+#include "../Matrix/Matrix.hpp"
 
 class File {
   public:
