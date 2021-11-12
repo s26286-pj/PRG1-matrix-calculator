@@ -2,23 +2,19 @@
 #include <cmath>
 #include <string>
 #include "File/File.hpp"
+#include "Matrix/Matrix.hpp"
 
-int main(int argc, char* argv[])
-{ 
-    for (int i = 0; i < argc; i++)
-    {
-         std::cout << argv[i] << std::endl;
-    }
+int main(int argc, char* argv[]){ 
     std::string firstMatrixFileName = argv[1];
     std::string secondMatrixFileName = argv[2];
     File *firstFile = new File(firstMatrixFileName);
-    std::vector<double> data = firstFile->getData();
-    for (double i: data){
-        std::cout << i << ' ';
-    }
-    std::cout << std::endl;
-    std::cout << "Liczba kolumn: " << firstFile->getColumnsCount() << std::endl;
-    std::cout << "Liczba wierszy: " << data.size() / firstFile->getColumnsCount() << std::endl;
+    Matrix firstMatrix = firstFile->getData();
+    firstMatrix.print();
+
+    MatrixCalculator *firstMatrixCalc = new MatrixCalculator(firstMatrix);
+    Matrix transposedMatrix = firstMatrixCalc->transpose();
+    
+    transposedMatrix.print();
 
     return 0;
 }

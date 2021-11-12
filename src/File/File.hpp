@@ -1,13 +1,17 @@
 #pragma once
 #include <vector>
+#include "../matrix/Matrix.hpp"
 
 class File {
   public:
       File(std::string filename);
-      std::vector<double> getData();
+      Matrix getData();
       int getColumnsCount();
+      bool save(std::string filename);
 
   private:
-      std::vector<double> data;
-      int columnsCount;  
+      bool read();
+      Matrix matrix;
+      int columnsCount;
+      std::string filename;
 };

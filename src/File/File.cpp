@@ -4,13 +4,24 @@
 #include <vector>
 #include <sstream>
 #include "File.hpp"
+#include "../matrix/Matrix.hpp"
 
 File::File(std::string filename) {
+    File::filename = filename;
+    File::read();
+}
+
+Matrix File::getData() {
+    return File::matrix;
+}
+
+bool File::read(){
     int row = 0;
     int firstLineNumbersCount = 0;
     bool firstLine = true;
+    Matrix matrix;
     std::ifstream file;
-    file.open( filename );
+    file.open( File::filename );
 
     if(file.good()) {
         std::string line;
@@ -23,16 +34,12 @@ File::File(std::string filename) {
                     firstLineNumbersCount++;
                 }
                 lineString >> number;
-                File::data.push_back(number);
+                File::matrix.data.push_back(number);
             }
             firstLine = false;
-            File::columnsCount = firstLineNumbersCount;
+            File::matrix.columnsCount = firstLineNumbersCount;
         }
     }
-}
-
-std::vector<double> File::getData() {
-    return File::data;
 }
 
 int File::getColumnsCount() {
