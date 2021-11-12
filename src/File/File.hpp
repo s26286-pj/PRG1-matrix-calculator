@@ -1,7 +1,13 @@
-#ifndef File
-#define File
-#include <string>
+#pragma once
+#include <vector>
 
-void loadMatrixFromFile( std::string filename );
+class File {
+  public:
+      File(std::string filename);
+      std::vector<double> getData();
+      int getColumnsCount();
 
-#endif
+  private:
+      std::vector<double> data;
+      int columnsCount;  
+};
