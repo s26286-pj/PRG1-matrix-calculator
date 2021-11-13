@@ -8,7 +8,11 @@ typedef struct Matrix {
     double getElement(int i, int j){
     	int index = ((j * columnsCount) + i);
     	return data[index];
-    }
+    };
+    void setElement(int i, int j, double value){
+    	int index = ((j * columnsCount) + i);
+    	data[index] = value;
+    };
 } Matrix;
 
 std::ostream & operator <<( std::ostream & s, const Matrix & a );

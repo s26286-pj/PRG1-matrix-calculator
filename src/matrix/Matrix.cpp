@@ -91,3 +91,35 @@ Matrix operator *( const double & a, const Matrix & b ){
 
     return returned;
 }
+
+double getElement(int i, int j, Matrix matrix){
+      int index = ((j * matrix.columnsCount) + i);
+      return matrix.data[index];
+};
+
+Matrix operator *( const Matrix & a, const Matrix & b ){
+  Matrix returned;
+  
+  int rows = a.data.size()/a.columnsCount;
+  int cols = b.columnsCount;
+  int length = cols * rows;
+  returned.columnsCount = cols;
+  for (int i = 0; i < length; ++i)
+  {
+    returned.data.push_back(0);
+  }
+  int rMax = a.columnsCount;
+
+  for (int i = 0; i < cols; ++i) {
+    for (int j = 0; j < rows; ++j) {
+      double sum = 0.0;
+      for (int r = 0; r < rMax; r++) {
+        double x = getElement(r, j, a);
+        double y = getElement(i, r, b);
+        sum = sum + (x * y);
+      }
+      returned.setElement(i, j, sum);
+    }
+  }
+  return returned;
+}
