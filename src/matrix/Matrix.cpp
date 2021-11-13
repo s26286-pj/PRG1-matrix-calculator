@@ -1,6 +1,35 @@
 #include <stdexcept>
 #include <sstream>
+#include <cmath>
 #include "Matrix.hpp"
+
+Matrix minor(Matrix matrix, int i, int j) {
+  Matrix returned;
+  returned.columnsCount = matrix.columnsCount - 1;
+  for (int k = 0; k < matrix.data.size(); ++k){
+    bool isRowToRemove = matrix.columnsCount * j <= k  && k < matrix.columnsCount * (j + 1);
+    bool isColToRemove = (k % matrix.columnsCount) == i;
+    if (!(isRowToRemove || isColToRemove)) {
+      returned.data.push_back(matrix.data[k]);
+    } 
+  }
+  return returned;
+}
+
+double matrixDeterminant(Matrix matrix){
+  int size = matrix.columnsCount;
+  if (size == 1 ) {
+    return matrix.data[0];
+  } else {
+    double sum = 0.0;
+    int j = 0;
+    for (int i = 0; i < size; i++) { 
+          double part = (matrix.getElement(i, j) * std::pow(-1, i+1 + j+1) * matrixDeterminant(minor(matrix, i, j)));
+        sum = sum + part; 
+    }
+    return sum;
+  }
+}
 
 std::ostream & operator <<( std::ostream & s, const Matrix & a ){
     std::string returned;
