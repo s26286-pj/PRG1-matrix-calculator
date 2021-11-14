@@ -5,9 +5,10 @@
 class File {
   public:
       File(std::string filename);
+      File(Matrix matrix);
       Matrix getData();
       int getColumnsCount();
-      bool save(std::string filename);
+      bool save();
 
   private:
       bool read();

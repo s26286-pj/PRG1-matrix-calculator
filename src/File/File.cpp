@@ -10,6 +10,10 @@ File::File(std::string filename) {
     File::filename = filename;
     File::read();
 }
+File::File(Matrix matrix) {
+    File::filename = "out.txt";
+    File::matrix = matrix;
+}
 
 Matrix File::getData() {
     return File::matrix;
@@ -42,6 +46,12 @@ bool File::read(){
         return true;
     }
     return false;
+}
+
+bool File::save() {
+    std::ofstream outfile (File::filename);
+    outfile << File::matrix << std::endl;
+    outfile.close();
 }
 
 int File::getColumnsCount() {

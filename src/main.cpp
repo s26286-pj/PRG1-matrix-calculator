@@ -14,6 +14,8 @@ int main(int argc, char* argv[]){
 
     std::cout << firstMatrix * secondMatrix;
 
+    File *out = new File(firstMatrix * secondMatrix);
+    out->save();
     // std::cout << firstMatrix.getElement(0, 1) << std::endl;
     // std::cout << matrixDeterminant(firstMatrix) << std::endl;
     // std::cout << firstMatrix + secondMatrix;
