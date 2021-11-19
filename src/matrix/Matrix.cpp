@@ -101,7 +101,6 @@ Matrix operator ~( const Matrix & a){
   int size = a.data.size();
   if (a.columnsCount == 2 && size == 4) {
     double determinant = matrixDeterminant(a);
-    std::cout << determinant << std::endl;
     if (determinant) {
       Matrix partial;
       partial.columnsCount = 2;
@@ -112,7 +111,7 @@ Matrix operator ~( const Matrix & a){
 
       return 1/determinant * partial;
     } else {
-      throw std::invalid_argument("Matrix cannot be inversed"); 
+      throw std::invalid_argument("Matrix cannot be inversed - determinant equals 0"); 
     }
   } else if (a.columnsCount == 3 && size == 9) {
     double determinant = matrixDeterminant(a);
@@ -130,7 +129,7 @@ Matrix operator ~( const Matrix & a){
       partial.data.push_back(a.data[0] * a.data[4] - a.data[1] * a.data[3]);
       return (1/determinant) * (!partial);
     } else {
-      throw std::invalid_argument("Matrix cannot be inversed"); 
+      throw std::invalid_argument("Matrix cannot be inversed - determinant equals 0"); 
     }
   } else {
     throw std::invalid_argument("Matrix cannot be inversed - only 2x2 and 3x3 matrixes are supported"); 
