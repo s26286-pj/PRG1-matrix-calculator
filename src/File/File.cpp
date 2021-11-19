@@ -8,18 +8,18 @@
 
 File::File(std::string filename) {
     File::filename = filename;
-    File::read();
+    File::readFile();
 }
-File::File(Matrix matrix) {
-    File::filename = "out.txt";
+File::File(Matrix matrix, std::string filename) {
+    File::filename = filename;
     File::matrix = matrix;
 }
 
-Matrix File::getData() {
+Matrix File::read() {
     return File::matrix;
 }
 
-bool File::read(){
+bool File::readFile(){
     int row = 0;
     int firstLineNumbersCount = 0;
     bool firstLine = true;
@@ -49,9 +49,11 @@ bool File::read(){
 }
 
 bool File::save() {
+    std::cout << "save";
     std::ofstream outfile (File::filename);
-    outfile << File::matrix << std::endl;
+    outfile << File::matrix;
     outfile.close();
+    return true;
 }
 
 int File::getColumnsCount() {
