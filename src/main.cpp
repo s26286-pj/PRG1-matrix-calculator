@@ -13,6 +13,9 @@ bool is1ParametersOperation(std::string command) {
     if (command.compare("inverse") == 0) {
         return true;
     }
+    if (command.compare("determinant") == 0) {
+        return true;
+    }
     return false;
 }
 
@@ -22,8 +25,6 @@ int main(int argc, char* argv[]){
     Matrix returned;
 
     bool saveToFile = strcmp(argv[argc-2], "-s") == 0;
-
-    std::cout << saveToFile << std::endl; 
 
     try {
         if (!is1ParametersOperation(command)) {
@@ -50,6 +51,10 @@ int main(int argc, char* argv[]){
                 returned = !firstMatrix;
             } else if (command.compare("inverse") == 0) {
                 returned = ~firstMatrix;
+            } else if (command.compare("determinant") == 0) {
+                //creating one dimentional array from number to simplyfy display and save to file process
+                returned.columnsCount = 1;
+                returned.data.push_back(matrixDeterminant(firstMatrix));
             } 
         }
         std::cout << returned << std::endl;

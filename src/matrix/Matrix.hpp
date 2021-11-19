@@ -25,3 +25,4 @@ Matrix operator ~( const Matrix & a);
 Matrix minor(Matrix matrix, int i, int j);
 double matrixDeterminant(Matrix matrix);
 double getElement(int i, int j, Matrix matrix);
+Matrix doubleToMatrix(double number);

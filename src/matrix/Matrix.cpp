@@ -168,3 +168,10 @@ double getElement(int i, int j, Matrix matrix){
   int index = ((j * matrix.columnsCount) + i);
   return matrix.data[index];
 };
+
+Matrix doubleToMatrix(double number) {
+  Matrix returned;
+  returned.columnsCount = 1;
+  returned.data[0] = number;
+  return returned;
+}
