@@ -12,8 +12,11 @@ Program pozwala na wykonywanie następujących obliczeń na macierzach:
 
 Przy wykorzystaniu lini poleceń do wprowadzania danych wejściowych w postaci pliku. Wynik jest podawany na standardowym wyjściu (std::cout) oraz opcjonalnie zapisywany jest w pliku.
 
-## Format pliku wejściowego oraz wyjściowego
+## Uruchomienie projektu
+1. W folderze ```code-blocks-project``` znajduje się wyeksportowany projekt do środowiska code::blocks. Testowany pod ubuntu 20.04 z kompilatorem gcc/g++. Program kompiluje się do folderu ```code-blocks-project/PRG/bin/Debug/```,  Przed uruchomieniem trzeba wziąć pod uwagę to iż architektura programu wymaga podania argumentów w wierszu poleceń, opisanych dalej w tym dokumencie.
+2. W głównym folderze znajduje się skrypt wykorzystywany podczas dewelopment-u - ```buildAndRun.sh``` - zawiera on komendę budowania oraz wielokrotnego uruchomienia z różnymi parametrami w celu weryfikacji poprawności danych wyjściowych. Jego działanie było testowane pod systemami osx 11.06 i ubuntu 20.04.
 
+## Format pliku wejściowego oraz wyjściowego
 macierz.txt
 ```
 -1 2 3 4
@@ -61,10 +64,8 @@ Poszczególne elementy macierzy przechowywane są oddzielone od siebie białym z
 ```
 ./main determinant macierz.txt
 ```
-
 ### Zapis do pliku
 Dokonywany jest przy dodaniu do lini komend parametru s ```-s [nazwa pliku]```
-
 ```
 ./main determinant macierz.txt -s plik_wyjsciowy.txt
 ```
