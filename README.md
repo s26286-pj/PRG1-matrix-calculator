@@ -31,8 +31,14 @@ Poszczególne elementy macierzy przechowywane są oddzielone od siebie białym z
 ./main [komenda] [skalar?] [macierz1] [macierz2?] [-s [nazwaPliku]?]
 ```
 ```[komenda]```: element obowiązkowy, definiuje wykonywane działanie na macierz(y/ach).
+
+```[skalar?]```: liczba, wykorzystywana tylko przy komendzie mnożenia przez skalar.
+
 ```[macierz1]```: ścieżka do pliku z macierzą - pierwszy parametr działania.
-```[macierz2]```: ścieżka do pliku z macierzą.
+
+```[macierz2?]```: ścieżka do pliku z macierzą - drugi parametr działania przy niektórych komendach.
+
+```[-s [nazwaPliku]?]```: parametry służące do zdefiniowania pliku wyjściowego, nieobowiązkowe.
 
 ### Lista komend z przykładami
 #### Transpozycja macierzy  ```transpose``` 
@@ -54,11 +60,11 @@ Poszczególne elementy macierzy przechowywane są oddzielone od siebie białym z
 #### Mnożenie macierzy ```multiply``` 
 1. Przez skalar
 	```
-	./main multiply 3.14 macierz1.txt
+	./main multiplyN 3.14 macierz1.txt
 	```
 2. Przez drugą macierz
 	```
-	./main subtract macierz1.txt macierz2.txt
+	./main multiply macierz1.txt macierz2.txt
 	```
 #### Obliczanie wyznacznika
 ```
